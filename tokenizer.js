@@ -2,7 +2,7 @@
 const grammar = `
 Tokens {
   tokens = token+
-  token = comment | string | whiteSpace | symbol | integer | character
+  token = comment | string | whiteSpace | symbol | integer | character | whiteSpace
   comment = percent (~newline anyChar)* newline
   string = quote (~quote anyChar)* quote
   whiteSpace = ws+
@@ -56,14 +56,9 @@ function addSem (sem) {
 	character: function (_1) { return `token character ${encodeURIComponent (_1.token ())} line[${line}] pos[${offset}]`; },
 
         percent: function (_1) { offset += 1; return "%"; },
-        newline: function (_1) {
-	    console.log (line);
-	    console.log (offset);
-            offset = 1; 
-            line += 1; 
-            return "\n"; },
+        newline: function (_1) { offset = 1; line += 1; return "\n"; },
         quote: function (_1) { offset += 1; return "\""; },
-        ws: function (_1) { offset += 1; return this.primitiveValue; },
+        ws: function (_1) { offset += 1; return ""; },
         symbolFirst: function (_1) { offset += 1; return _1.token (); },
         symbolMore: function (_1) { offset += 1; return _1.token (); },
         num: function (_1) { offset += 1; return _1.token (); },
