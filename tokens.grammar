@@ -1,0 +1,18 @@
+Tokens {
+  Tokens = Token+
+  Token = comment | string | whiteSpace | symbol | integer | character
+  comment = percent (~newline anyChar)* newline
+  string = quote (~quote anyChar)* quote
+  whiteSpace = ws+
+  symbol = symbolFirst symbolMore*
+  integer = num+
+  character = any
+  
+  percent = "%"
+  newline = "\n"
+  quote = "\""
+  ws = " " | "\t"
+  symbolFirst = "A" .. "Z" | "a" .. "z"
+  symbolMore = num | symbolFirst
+  num = "0" .. "9"
+}
