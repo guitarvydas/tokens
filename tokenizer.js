@@ -48,12 +48,12 @@ function addSem (sem) {
     {
 	tokens: function (_1s) { return _1s.token ().join ("\n"); },
 	token: function (_1) { return _1.token (); },
-	comment: function (_1, _2s, _3) { return `[comment ${encodeURIComponent (_2s.token ().join (''))} [${line}:${offset}]]`; },
-	string: function (_1, _2, _3) { return `[string ${encodeURIComponent (_2s.token ().join (''))} [${line}:${offset}]`; },
-	whiteSpace: function (_1) { return `[whiteSpace ${encodeURIComponent (_1.token ())} [${line}:${offset}]`; },
-	symbol: function (_1, _2s) { return `[symbol ${encodeURIComponent (_1.token ())}${encodeURIComponent (_2s.token ().join (''))} [${line}:${offset}]]`; },
-	integer : function (_1) { return `[symbol ${encodeURIComponent (_1.token ())} [${line}:${offset}]]`; },
-	character: function (_1) { return `[character ${encodeURIComponent (_1.token ())} [${line}:${offset}]]`; },
+	comment: function (_1, _2s, _3) { return `[comment ${encodeURIComponent (_2s.token ().join (''))} ${line} ${offset}]`; },
+	string: function (_1, _2, _3) { return `[string ${encodeURIComponent (_2s.token ().join (''))} ${line} ${offset}]`; },
+	whiteSpace: function (_1) { return `[whiteSpace ${encodeURIComponent (_1.token ())} ${line} ${offset}]`; },
+	symbol: function (_1, _2s) { return `[symbol ${encodeURIComponent (_1.token ())}${encodeURIComponent (_2s.token ().join (''))}  ${line} ${offset}]`; },
+	integer : function (_1) { return `[symbol ${encodeURIComponent (_1.token ())}  ${line} ${offset}]`; },
+	character: function (_1) { return `[character ${encodeURIComponent (_1.token ())} ${line} ${offset}]`; },
 
         percent: function (_1) { offset += 1; return "%"; },
         newline: function (_1) { offset = 1; line += 1; return "\n"; },
