@@ -50,7 +50,7 @@ function addSem (sem) {
 	token: function (_1) { return _1.token (); },
 	comment: function (_1, _2s, _3) { return `[comment ${encodeURIComponent (_2s.token ().join (''))} ${line} ${offset}]`; },
 	string: function (_1, _2, _3) { return `[string ${encodeURIComponent (_2s.token ().join (''))} ${line} ${offset}]`; },
-	whiteSpace: function (_1) { return `[whiteSpace ${encodeURIComponent (_1.token ())} ${line} ${offset}]`; },
+	whiteSpace: function (_1s) { return `[whiteSpace ${encodeURIComponent (_1s.token ().join (''))} ${line} ${offset}]`; },
 	symbol: function (_1, _2s) { return `[symbol ${encodeURIComponent (_1.token ())}${encodeURIComponent (_2s.token ().join (''))}  ${line} ${offset}]`; },
 	integer : function (_1) { return `[symbol ${encodeURIComponent (_1.token ())}  ${line} ${offset}]`; },
 	character: function (_1) { return `[character ${encodeURIComponent (_1.token ())} ${line} ${offset}]`; },
