@@ -48,7 +48,8 @@ function addSem (sem) {
     {
 	tokens: function (_1s) { return _1s.token ().join ("\n"); },
 	token: function (_1) { return _1.token (); },
-	comment: function (_1, _2s, _3) { return `[comment ${encodeURIComponent (_2s.token ().join (''))} ${line} ${offset}]`; },
+	comment: function (_1, _2s, _3) { 
+	    return `[comment ${encodeURIComponent(_1.token ())}${encodeURIComponent (_2s.token ().join (''))}${_3.token ()} ${line} ${offset}]`; },
 	string: function (_1, _2, _3) { return `[string ${encodeURIComponent (_2s.token ().join (''))} ${line} ${offset}]`; },
 	whiteSpace: function (_1s) { return `[whiteSpace ${encodeURIComponent (_1s.token ().join (''))} ${line} ${offset}]`; },
 	symbol: function (_1, _2s) { return `[symbol ${encodeURIComponent (_1.token ())}${encodeURIComponent (_2s.token ().join (''))}  ${line} ${offset}]`; },
