@@ -69,7 +69,7 @@ function addSem (sem) {
 }
 
 function main () {
-    var text = getJSON("test.txt");
+    var text = getJSON("-");
     var parsed = tokenize (text);
     return parsed;
 }
