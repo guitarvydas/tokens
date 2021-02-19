@@ -2,7 +2,8 @@
 const grammar = `
 Tokens {
   tokens = token+
-  token = comment | string | whiteSpace | symbol | integer | character | whiteSpace
+  token = pragma | comment | string | whiteSpace | symbol | integer | character | whiteSpace
+  pragma = percent percent "pragma" (~newline anyChar)* newline
   comment = percent (~newline anyChar)* newline
   string = quote (~quote anyChar)* quote
   whiteSpace = ws+
@@ -48,6 +49,8 @@ function addSem (sem) {
     {
 	tokens: function (_1s) { return _1s.token ().join ("\n"); },
 	token: function (_1) { return _1.token (); },
+	pragma: function (_1, _2, _3, _4s, _5) { 
+	    return `[pragma,${encodeURIComponent (_4s.token ().join (''))}${encodeURIComponent(_5.token ())},${line},${offset}]`; },
 	comment: function (_1, _2s, _3) { 
 	    return `[comment,${encodeURIComponent(_1.token ())}${encodeURIComponent (_2s.token ().join (''))}${encodeURIComponent(_3.token ())},${line},${offset}]`; },
 	string: function (_1, _2s, _3) {

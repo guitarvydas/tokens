@@ -1,5 +1,7 @@
 % this is a comment
+%%pragma hello
 topmost(L1,L2,L) :-
+%%pragma world
     horizontal(L1),
     horizontal(L2),
     L1.x =< L2.x.
